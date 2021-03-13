@@ -13,7 +13,7 @@ const debug = Debug('feathers-refresh-token');
  * this hook must be un-protected because when client call refresh-access-token API existing
  * access-token already expired.
  */
-export const refreshAccessToken = (options = {}): Hook<any, Service<any>> => {
+export const refreshAccessToken = () => {
   return async (context: HookContext) => {
     const { data, app, type, params, method } = context;
     const config = loadConfig(app as Application);

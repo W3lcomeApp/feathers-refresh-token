@@ -20,8 +20,8 @@ export const defaultOptions = {
     header: {
       typ: 'refresh'
     },
-    audience: 'https://example.com',
-    issuer: 'example',
+    audience: 'https://w3lcome.com',
+    issuer: 'w3lcome',
     algorithm: 'HS256',
     expiresIn: '360d'
   }

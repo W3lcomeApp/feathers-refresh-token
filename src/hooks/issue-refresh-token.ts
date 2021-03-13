@@ -9,7 +9,7 @@ const debug = Debug('feathers-refresh-token');
 // After hook with authentication service
 // result - authResult which will return to user, contains access token, sub and strategy
 
-export const issueRefreshToken = (options = {}) => {
+export const issueRefreshToken = () => {
   return async (context: HookContext) => {
     const { app, data, result, method } = context;
     const config = loadConfig(app as Application);

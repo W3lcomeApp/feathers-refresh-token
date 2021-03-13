@@ -10,7 +10,7 @@ const debug = Debug('feathers-refresh-token');
  * Logout user by deleting the refresh-token, it must be a protected route
  * params.user must be populated with user entity
  */
-export const logoutUser = (options = {}) => {
+export const logoutUser = () => {
   return async (context: HookContext) => {
     const { app, type, method, params } = context;
     const config = loadConfig(app);
@@ -37,7 +37,7 @@ export const logoutUser = (options = {}) => {
 
     debug('Logout hook id and params', query, user);
 
-    if (!query || !user[userEntityId]) {
+    if (!query || !user?.[userEntityId]) {
       throw new Error(`Invalid query strings or user is not authenticated!`);
     }
 

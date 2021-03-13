@@ -12,7 +12,7 @@ const debug = Debug('feathers-refresh-token');
  * Revoke refresh-token by set isValid to false, it must be a protected route
  * params.user must be populated with user entity
  */
-export const revokeRefreshToken = (options = {}): Hook<any, Service<any>> => {
+export const revokeRefreshToken = () => {
   return async (context: HookContext) => {
     const { data, app, method, type, params } = context;
     const config = loadConfig(app as Application);
@@ -41,7 +41,7 @@ export const revokeRefreshToken = (options = {}): Hook<any, Service<any>> => {
 
     debug('Revoke refresh-token for user', user);
 
-    if (!user[userEntityId]) {
+    if (!user?.[userEntityId]) {
       throw new Error(`Invalid query strings or user is not authenticated!`);
     }
 
