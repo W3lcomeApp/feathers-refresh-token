@@ -226,7 +226,7 @@ describe('refresh-token-hooks', () => {
         },
         params
       );
-      assert.notEqual(authResult.accessToken, accessToken);
+      assert.notStrictEqual(authResult.accessToken, accessToken);
     });
   });
 
@@ -247,14 +247,14 @@ describe('refresh-token-hooks', () => {
     });
 
     it('can revoke a valid refresh-token', async () => {
-      const authResult = await app.service('refresh-tokens').patch(
+      const authResult: any = await app.service('refresh-tokens').patch(
         null,
         {
           refreshToken
         },
         params
       );
-      assert.strictEqual(authResult.isValid, false);
+      assert.strictEqual(authResult?.isValid, false);
     });
   });
 

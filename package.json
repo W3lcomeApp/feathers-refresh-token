@@ -1,7 +1,7 @@
 {
   "name": "@w3lcome/feathers-refresh-token",
   "description": "Refresh token hooks for @feathers/authentication",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "homepage": "https://github.com/W3lcomeApp/feathers-refresh-token#readme",
   "main": "lib/",
   "types": "lib/",
@@ -20,8 +20,8 @@
     "url": "git://github.com/W3lcomeApp/feathers-refresh-token.git"
   },
   "author": {
-    "name": "Jacky Wu",
-    "email": "me@jackywu.ca"
+    "name": "Alisson Enz",
+    "email": "alisson@w3lcome.com"
   },
   "contributors": [],
   "bugs": {
