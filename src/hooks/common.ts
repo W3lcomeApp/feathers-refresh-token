@@ -151,17 +151,24 @@ export const lookupRefreshToken = async (
   if (!data || !data.refreshToken) {
     return { existingToken: null, verifyResult: null };
   }
-
   // ! verify refresh-token before returning
-  const verifyResult = await app.service(authService).verifyAccessToken(
-    data.refreshToken,
-    jwtOptions, // refresh token options
-    secret // refresh token secret, should be different than access token
-  );
+  try {
+    const verifyResult = await app.service(authService).verifyAccessToken(
+      data.refreshToken,
+      jwtOptions, // refresh token options
+      secret // refresh token secret, should be different than access token
+    );
+    
+    if (!verifyResult) {
+      throw new Error('Invalid refresh-token!');
+    }
 
-  if (!verifyResult) {
-    throw new Error('Invalid refresh-token!');
+    return { existingToken: data, verifyResult };
+  } catch (error) {
+    // refresh token is invalid
+    await app.service(service).patch(data.id, {
+      isValid: false
+    });
+    return { existingToken: null, verifyResult: null };
   }
-
-  return { existingToken: data, verifyResult };
 };
